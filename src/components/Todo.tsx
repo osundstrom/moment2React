@@ -1,13 +1,36 @@
-
-const Todo = ({todo}: {todo: any}) => {
+import { useState } from "react";
+const Todo = ({todo, atStatUpdate}: {todo: any, atStatUpdate: Function}) => {
 
     const statusTextColor = todo.status === "Avklarad" ? "green" : 
-    todo.status === "Pågående" ? "yellow" : "red";
+    todo.status === "Pågående" ? "orange" : "red";
 
-    const changeStat = (event:any) => { 
+    const [error, setError] = useState<string| null> (null);
+
+    const changeStat = async (event:any) => { 
         let updatedStatus = event.target.value;
 
-        console.log(updatedStatus);
+        const updatedTodo = {...Todo, status: updatedStatus};
+
+        try {
+            const response = await fetch("http://localhost:3000/todo/" + todo._id, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedTodo)
+                
+            });
+            //const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error("Error vid uppdatering av status");
+            }
+
+            atStatUpdate();
+            
+        }catch (error) {
+            setError("Error vid ändring"+ error);
+        }
     }
 
     return (
@@ -16,6 +39,7 @@ const Todo = ({todo}: {todo: any}) => {
             <p>{todo.description}</p>
             <p style={{color: statusTextColor}}>{todo.status}</p>
             <hr />
+            {error && <p>{error}</p>}
             <form className="mb-3 form-group">
                 <label htmlFor="status">Ändra status:</label>
                 <select name="status" id="status"  defaultValue={todo.status} onChange={changeStat}>

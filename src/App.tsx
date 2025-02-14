@@ -64,7 +64,7 @@ function App() {
     <div className="row g-4 m-3">
  
       {todos.map((todo) => (
-        <Todo todo={todo} key={todo._id} />
+        <Todo todo={todo} key={todo._id} atStatUpdate={fetchTodos} />
       ))}
     
   </div>
