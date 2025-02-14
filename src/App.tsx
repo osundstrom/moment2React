@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Todo from "./components/Todo";
+import Header from "./components/Head";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
@@ -49,8 +50,8 @@ function App() {
 
   return (
     <>
-    <main className="container text-center">
-    <h1>Todos</h1>
+    <Header headline="Todos"/>
+    <main className="container text-center mainFull">
 
     {loading && <p>Läser in data...</p>}
 
@@ -59,7 +60,7 @@ function App() {
 
 
     <div className="container text-start">
-    <div className="row g-3 align-items-start d-flex flex-wrap">
+    <div className="row g-4 m-3">
  
       {todos.map((todo) => (
         <Todo todo={todo} key={todo.id} />

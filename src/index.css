@@ -1,17 +1,16 @@
-main{
+body{
     width: 100vw;
+    overflow-x: hidden;
 }
 
 #todoDiv{
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px dotted black;
 }
 
 
 form{
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: center;
     align-items: baseline;
 }
