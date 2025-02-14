@@ -7,6 +7,13 @@ body{
     border: 1px dotted black;
 }
 
+#todoDiv button{
+    display: flex;
+    float: right;
+    margin-top: -5vh;
+    margin-right: 1vw;
+}
+
 
 form{
     display: flex;

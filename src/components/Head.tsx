@@ -1,17 +1,17 @@
 import "../Header.css";
 
 interface Oneheadline {
-    headline: string; 
+    headline: string;
 }
 
 function Header({ headline }: Oneheadline) {
 
 
     return (
-       
+
         <>
             <header>
-                
+
             </header>
             <h1>{headline}</h1>
         </>
