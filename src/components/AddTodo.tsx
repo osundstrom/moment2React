@@ -11,15 +11,35 @@ const AddTodo = ({atNewTodo}: {atNewTodo: Function}) => {
 //-------------------------------------------------------------------------------------------------//
 
     const atTitleForm = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value);
+        const titelValue = event.target.value
+        setTitle(titelValue);
+        if (titelValue.length < 3) {
+            setError("Titel måste vara minst 3 tecken");
+        } else {
+            setError(null)
+        }
     } 
 
     const atDescriptionForm = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setDescription(event.target.value);
+        const discValue = event.target.value
+        setDescription(discValue);
+        if (discValue.length < 1) {
+            setError("Beskrivning får ej vara tom");
+        } else if (discValue.length > 200){
+            setError("Beskrivning får max vara 200 tecken");
+        }else {
+            setError(null);
+        }
     }
 
     const atStatusForm = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setStatus(event.target.value);
+        const statusValue = event.target.value;
+    setStatus(statusValue)
+    if (!statusValue) {
+      setError("Du måste välja en status");
+    } else {
+      setError(null);
+    }
     }
 
 
@@ -29,20 +49,12 @@ const AddTodo = ({atNewTodo}: {atNewTodo: Function}) => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-   
-    
 
     const newTodo = {
         title: title,
         description: description,
         status: status
     };
-
-    if(!newTodo.title || !newTodo.description || newTodo.status == "" ) {
-        setError("Samtliga fält måste fyllas i.");
-        return;
-    }
-
    
     try {
         const response = await fetch("http://localhost:3000/todo/", {
@@ -54,6 +66,10 @@ const AddTodo = ({atNewTodo}: {atNewTodo: Function}) => {
             
         });
 
+        if(!title || !description || status === "") {
+            setError("Samtliga fält måste fyllas i.");
+            return;
+        }
 
         if (!response.ok) {
             throw new Error("Error vid post");
@@ -62,9 +78,7 @@ const AddTodo = ({atNewTodo}: {atNewTodo: Function}) => {
 
         const data = await response.json();
 
-        if(!data.title || !data.description || data.status === "välj:" ) {
-            setError("Samtliga fält måste fyllas i.");
-        }
+       
         console.log( data.title);
 
         setDescription("");
@@ -82,7 +96,7 @@ const AddTodo = ({atNewTodo}: {atNewTodo: Function}) => {
     
 return (
     <section id="sectionForm">
-         {error && <p>{error}</p>}
+         {error && <div className="alert alert-danger">{error}</div>}
 
     <form onSubmit={handleSubmit}>
         <label htmlFor="title">Titel:</label>

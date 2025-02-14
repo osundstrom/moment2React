@@ -14,3 +14,8 @@ form{
     justify-content: center;
     align-items: baseline;
 }
+
+
+#todoDesc {
+    overflow-wrap: break-word;
+}

@@ -64,7 +64,7 @@ const deleteTodo = async () => {
     return (
         <div className="col-lg-4 col-md-6 col-sm-12 p-2" id="todoDiv">
             <h2>{todo.title}</h2>
-            <p>{todo.description}</p>
+            <p id="todoDesc">{todo.description}</p>
             <p style={{color: statusTextColor}}>{todo.status}</p>
             <hr />
             {error && <p>{error}</p>}
