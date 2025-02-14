@@ -1,14 +1,15 @@
 footer {
     width: 100vw;
     height: 3vh;
-    background-color: rgba(143, 232, 244, 0.239);
     position: relative;
     border-top: 1px dotted black;
+    margin-top: 5vh;
 }
 .Pfooter{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2vh;
 }
 
 

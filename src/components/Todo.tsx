@@ -1,11 +1,14 @@
 import { useState } from "react";
-const Todo = ({todo, atStatUpdate}: {todo: any, atStatUpdate: Function}) => {
+
+const Todo = ({todo, atStatUpdate, atDeleteTodo}: {todo: any, atStatUpdate: Function, atDeleteTodo: Function}) => {
 
     const statusTextColor = todo.status === "Avklarad" ? "green" : 
     todo.status === "Pågående" ? "orange" : "red";
 
     const [error, setError] = useState<string| null> (null);
 
+
+//-----------------------------------------------------------------------------------------//
     const changeStat = async (event:any) => { 
         let updatedStatus = event.target.value;
 
@@ -33,6 +36,31 @@ const Todo = ({todo, atStatUpdate}: {todo: any, atStatUpdate: Function}) => {
         }
     }
 
+//-----------------------------------------------------------------------------------------//
+
+
+const deleteTodo = async () => {
+    try {
+        const response = await fetch("http://localhost:3000/todo/" + todo._id, {
+            method: "DELETE",
+        });
+
+        if (!response.ok) {
+            throw new Error("Error vid radering av todo");
+        }
+
+        atDeleteTodo();
+
+    } catch (error) {
+        setError("Error vid radering:" + error);
+    }
+}
+
+
+
+
+
+//-----------------------------------------------------------------------------------------//
     return (
         <div className="col-lg-4 col-md-6 col-sm-12 p-2" id="todoDiv">
             <h2>{todo.title}</h2>
@@ -48,6 +76,7 @@ const Todo = ({todo, atStatUpdate}: {todo: any, atStatUpdate: Function}) => {
                     <option value="Ej påbörjad">Ej påbörjad</option>
                 </select>
             </form>
+            <button onClick={deleteTodo} className="btn btn-danger">Radera</button>
         </div>
         
 
