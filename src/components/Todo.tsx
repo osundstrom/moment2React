@@ -20,7 +20,7 @@ const Todo = ({ todo, atStatUpdate, atDeleteTodo }: { todo: any, atStatUpdate: F
 
         //PUT förfrågan
         try {
-            const response = await fetch("http://localhost:3000/todo/" + todo._id, {
+            const response = await fetch("https://backreact2.onrender.com/todo/" + todo._id, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -50,7 +50,7 @@ const Todo = ({ todo, atStatUpdate, atDeleteTodo }: { todo: any, atStatUpdate: F
     const deleteTodo = async () => {
         //DELETE förfrågan
         try {
-            const response = await fetch("http://localhost:3000/todo/" + todo._id, {
+            const response = await fetch("https://backreact2.onrender.com/todo/" + todo._id, {
                 method: "DELETE",
             });
 

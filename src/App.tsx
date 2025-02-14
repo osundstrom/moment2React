@@ -34,7 +34,7 @@ function App() {
     try {
       setLoading(true); //startar laddning/texten för laddning visas.
 
-      const response = await fetch("http://localhost:3000/todo");
+      const response = await fetch("https://backreact2.onrender.com/todo/");
       const data = await response.json();
 
       //Om reposne ej är ok

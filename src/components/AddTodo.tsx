@@ -69,7 +69,7 @@ const AddTodo = ({ atNewTodo }: { atNewTodo: Function }) => {
 
         //POST förfrågan
         try {
-            const response = await fetch("http://localhost:3000/todo/", {
+            const response = await fetch("https://backreact2.onrender.com/todo/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
