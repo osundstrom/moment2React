@@ -7,7 +7,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 
 interface oneTodo {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   status: string;
@@ -64,7 +64,7 @@ function App() {
     <div className="row g-4 m-3">
  
       {todos.map((todo) => (
-        <Todo todo={todo} key={todo.id} />
+        <Todo todo={todo} key={todo._id} />
       ))}
     
   </div>

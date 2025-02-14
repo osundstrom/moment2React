@@ -4,6 +4,11 @@ const Todo = ({todo}: {todo: any}) => {
     const statusTextColor = todo.status === "Avklarad" ? "green" : 
     todo.status === "Pågående" ? "yellow" : "red";
 
+    const changeStat = (event:any) => { 
+        let updatedStatus = event.target.value;
+
+        console.log(updatedStatus);
+    }
 
     return (
         <div className="col-lg-4 col-md-6 col-sm-12 p-2" id="todoDiv">
@@ -13,7 +18,7 @@ const Todo = ({todo}: {todo: any}) => {
             <hr />
             <form className="mb-3 form-group">
                 <label htmlFor="status">Ändra status:</label>
-                <select name="status" id="status"  defaultValue={todo.status}>
+                <select name="status" id="status"  defaultValue={todo.status} onChange={changeStat}>
                     <option value="Avklarad">Avklarad</option>
                     <option value="Pågående">Pågående</option>
                     <option value="Ej påbörjad">Ej påbörjad</option>
