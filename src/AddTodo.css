@@ -1,0 +1,14 @@
+#sectionForm{
+    position: relative;
+    display: inline-block;
+    width: 50vw;
+}
+
+#sectionForm label, input, select {
+    display: inline-block;
+}
+
+
+#sectionForm button{
+    margin-top: 2vh;
+}

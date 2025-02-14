@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Todo from "./components/Todo";
 import Header from "./components/Head";
 import Footer from "./components/Footer";
+import AddTodo from "./components/AddTodo";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
@@ -52,8 +53,9 @@ function App() {
   return (
     <>
     <Header headline="Todos"/>
+    
     <main className="container text-center mainFull">
-
+    <AddTodo atNewTodo={fetchTodos}/>
     {loading && <p>Läser in data...</p>}
 
 
@@ -64,7 +66,7 @@ function App() {
     <div className="row g-4 m-3">
  
       {todos.map((todo) => (
-        <Todo todo={todo} key={todo._id} atStatUpdate={fetchTodos} atDeleteTodo={fetchTodos}/>
+        <Todo todo={todo} key={todo._id} atStatUpdate={fetchTodos} atDeleteTodo={fetchTodos} />
       ))}
     
   </div>
