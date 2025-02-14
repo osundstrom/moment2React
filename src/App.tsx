@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import Todo from "./components/Todo";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 
 interface oneTodo {
   id: string;
@@ -46,7 +49,7 @@ function App() {
 
   return (
     <>
-    <main>
+    <main className="container text-center">
     <h1>Todos</h1>
 
     {loading && <p>Läser in data...</p>}
@@ -54,11 +57,17 @@ function App() {
 
     {error && <p>{error}</p>}
 
-    <div className="todosDiv">
+
+    <div className="container text-start">
+    <div className="row g-3 align-items-start d-flex flex-wrap">
+ 
       {todos.map((todo) => (
         <Todo todo={todo} key={todo.id} />
       ))}
-    </div>
+    
+  </div>
+</div>
+
     
     </main>
     </>

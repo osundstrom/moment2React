@@ -6,20 +6,22 @@ const Todo = ({todo}: {todo: any}) => {
 
 
     return (
-        <section className="todoSection">
+        <div className="col-lg-4 col-md-6 col-sm-12 p-2" id="todoDiv">
             <h2>{todo.title}</h2>
             <p>{todo.description}</p>
             <p style={{color: statusTextColor}}>{todo.status}</p>
-            
-            <form>
-                <label htmlFor="status">Uppdatera status:</label>
-                <select name="status" id="status" defaultValue={todo.status}>
+            <hr />
+            <form className="mb-3 form-group">
+                <label htmlFor="status">Ändra status:</label>
+                <select name="status" id="status"  defaultValue={todo.status}>
                     <option value="Avklarad">Avklarad</option>
                     <option value="Pågående">Pågående</option>
                     <option value="Ej påbörjad">Ej påbörjad</option>
                 </select>
             </form>
-        </section>
+        </div>
+        
+
     )
 }
 
