@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Todo from "./components/Todo";
 import Header from "./components/Head";
+import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
@@ -71,6 +72,7 @@ function App() {
 
     
     </main>
+    <Footer/>
     </>
   )
 }
